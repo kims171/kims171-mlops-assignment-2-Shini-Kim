@@ -38,12 +38,29 @@
 ## 2. Identified Data Quality Issues
 Based on the Great Expectations validation run on `customer_data.csv`, the following data quality issues were flagged:
 
-* **Missing Values (Age/Email/Salary):** Several rows contained null or empty fields.
-* **Duplicate Records:** `1` rows failed the customer_id uniqueness check.
-* **Out-of-range Values (Age):** `1` rows showed ages outside the valid 0-120 range (e.g., age 999).
-* **Out-of-range Values (Salary):** `1` rows showed negative salaries.
-* **Invalid Email Formats:** `1` rows failed the regex validation (e.g., missing local parts or domains).
-* **Invalid Geographies:** `1` rows contained countries outside the approved USA, Canada, UK, Australia list (e.g., India).
+#### age
+- `384` unexpected values, values outside of the rane of 0~120
+- ≈7.888% of 5015 total rows
+
+#### country
+- `301` unexpected values, values outside of this set: USA Canada UK Australia.
+- ≈6.051% of 5015 total rows.
+
+#### customer_id
+- `150` null values ≈2.991% of 5015 total rows.
+- `568` duplicate values ≈11.68% of 5015 total rows.
+
+####email
+- `306` unexpected values, values that does not match this regular expression: ^[^@]+@[^@]+\.[^@]+$.
+- ≈6.686% of 5015 total rows.
+
+#### salary
+- `425` null values ≈8.475% of 5015 total rows.
+
+#### signup_date
+- No issues found
+
+<br>
 
 ## 3. Pytest Execution Results
 
